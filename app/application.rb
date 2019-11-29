@@ -4,11 +4,8 @@ class Application
 
   def call(env)
     resp = Rack::Response.new
-    if (Time.now.strftime("%k").to_i < 12) 
-      resp.write "Good Morning"
-      else
-        resp.write "Good Afternoon"
-    end
+    Time.now.strftime("%k").to_i < 12 ? resp.write "Good Morning" : resp.write "Good Afternoon"
+
     resp.finish
   end
 
